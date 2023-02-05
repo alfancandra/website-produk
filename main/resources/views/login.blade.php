@@ -50,12 +50,10 @@
                 <div class="row">
                   <div class="col">
                       <button type="submit" class="btn btn-block btn-primary">SIGN IN</button>
-                    
-                  </div>
-                  <div class="col">
-                    <a href="/" class="btn btn-block btn-light float-right">Cancel</a>
                   </div>
                 </div>
+                <br>
+                <a href="/register">Don't have an account? click to register</a>
                 
               </form>
             </div>

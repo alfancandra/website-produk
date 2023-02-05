@@ -26,6 +26,9 @@
                         <td>:</td>
                         <td>{{ $data->deskripsi }}</td>
                     </tr>
+                    <tr>
+                        <td colspan="3"><a href="{{ route('produk.buy',$data->id) }}" class="btn btn-primary btn-lg">Beli</a></td>
+                    </tr>
                 </table>
             </div>
         </div>

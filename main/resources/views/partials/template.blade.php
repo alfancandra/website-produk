@@ -62,6 +62,8 @@
                 <a href="{{ route('info') }}"
                     class="nav-item nav-link {{ Request::is('info') ? 'active' : '' }}">Info</a>
                 @if(Auth::user())
+                <a href="{{ route('pemesanan') }}"
+                class="nav-item nav-link {{ Request::is('pemesanan') ? 'active' : '' }}">Pemesanan</a>
                 <a href="{{ route('logout') }}"
                 class="nav-item nav-link">Logout</a>
                 @else 

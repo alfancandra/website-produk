@@ -14,6 +14,12 @@
             </a>
         </li>
         <li class="nav-item">
+            <a class="nav-link" href="{{ route('adm.pemesanan.index') }}">
+                <i class="menu-icon mdi mdi-table"></i>
+                <span class="menu-title">Pemesanan</span>
+            </a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" href="{{ route('adm.info.index') }}">
                 <i class="menu-icon mdi mdi-table"></i>
                 <span class="menu-title">Info</span>

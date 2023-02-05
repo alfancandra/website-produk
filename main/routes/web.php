@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProdukController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\InfoController;
+use App\Http\Controllers\Admin\PemesananController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,6 +26,10 @@ Route::get('/cari', [FrontEndController::class,'cari'])->name('cari');
 // Produk
 Route::get('/produk', [FrontEndController::class,'produk'])->name('produk');
 Route::get('/produk/{id}', [FrontEndController::class,'detail_produk'])->name('produk.detail');
+Route::get('/produk/{id}/buy', [FrontEndController::class,'buy_produk'])->name('produk.buy');
+Route::post('/produk/buy/{id}', [FrontEndController::class,'buy_produk_action'])->name('produk.buy.action');
+// Pemesanan
+Route::get('/pemesanan', [FrontEndController::class,'pemesanan'])->name('pemesanan');
 // About
 Route::get('/about', [FrontEndController::class,'about'])->name('about');
 // Info
@@ -32,6 +37,8 @@ Route::get('/info', [FrontEndController::class,'info'])->name('info');
 
 
 Route::get('/login',[LoginController::class,'index'])->name('login');
+Route::get('/register',[LoginController::class,'register'])->name('register');
+Route::post('/register',[LoginController::class,'register_action'])->name('register.action');
 Route::post('/login',[LoginController::class,'login'])->name('login.action');
 Route::get('/logout',[LoginController::class,'logout'])->name('logout');
 
@@ -46,4 +53,8 @@ Route::group(['middleware' => ["Admin"], 'as' => 'adm.'], function () {
 
     Route::get('/admin/info',[InfoController::class,'index'])->name('info.index');
     Route::post('/admin/info',[InfoController::class,'update'])->name('info.update');
+
+    Route::get('/admin/pemesanan',[PemesananController::class,'index'])->name('pemesanan.index');
+    Route::get('/admin/pemesanan/{id}',[PemesananController::class,'show'])->name('pemesanan.show');
+    Route::get('/admin/pemesanan/set/{id}/{status}',[PemesananController::class,'set'])->name('pemesanan.set');
 });

@@ -30,6 +30,9 @@ class LoginController extends Controller
                 if(Auth::user()->role == 'ADMIN'){
                     return redirect()->route('adm.dashboardadmin');
                 }else{
+                    if(session('link')){
+                        return redirect(session('link'));
+                    }
                     return redirect('/');
                 }
             } else {
@@ -41,6 +44,33 @@ class LoginController extends Controller
             // ]);
             return redirect()->route('login')->with(['error' => $e->errorInfo]);
         }
+    }
+
+    public function register()
+    {
+        return view('register');
+    }
+
+    public function register_action(Request $request)
+    {
+        // Validasi
+        $request->validate([
+            'name' =>  'required',
+            'username' => 'required',
+            'password' => 'required|confirmed',
+        ]);
+
+        $user_id = User::create([
+            'name' => $request->name,
+            'username' => $request->username,
+            'password' => Hash::make($request->password),
+            'role' => 'USER'
+        ]);
+        Auth::loginUsingId($user_id);
+        if(session('link')){
+            return redirect(session('link'));
+        }
+        return redirect('/');
     }
 
     public function logout()
