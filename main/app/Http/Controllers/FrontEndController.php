@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Produk;
+use App\Models\Info;
 
 class FrontEndController extends Controller
 {
@@ -31,7 +32,8 @@ class FrontEndController extends Controller
 
     public function info()
     {
-        return view('info');
+        $data = Info::first();
+        return view('info',compact('data'));
     }
 
     public function cari(Request $request)

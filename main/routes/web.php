@@ -5,6 +5,8 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\FrontEndController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProdukController;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\InfoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,4 +40,10 @@ Route::group(['middleware' => ["Admin"], 'as' => 'adm.'], function () {
     Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('dashboardadmin');
     Route::resource('/admin/produk', ProdukController::class);
     Route::get('/admin/produk/delete/{id}', [ProdukController::class,'destroy'])->name('produk.hapus');
+
+    Route::resource('/admin/user',UserController::class);
+    Route::get('/admin/user/delete/{id}', [UserController::class,'destroy'])->name('user.hapus');
+
+    Route::get('/admin/info',[InfoController::class,'index'])->name('info.index');
+    Route::post('/admin/info',[InfoController::class,'update'])->name('info.update');
 });

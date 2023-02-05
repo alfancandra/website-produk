@@ -61,6 +61,13 @@
                     class="nav-item nav-link {{ Request::is('about') ? 'active' : '' }}">About</a>
                 <a href="{{ route('info') }}"
                     class="nav-item nav-link {{ Request::is('info') ? 'active' : '' }}">Info</a>
+                @if(Auth::user())
+                <a href="{{ route('logout') }}"
+                class="nav-item nav-link">Logout</a>
+                @else 
+                <a href="{{ route('login') }}"
+                class="nav-item nav-link">Login</a>
+                @endif
             </div>
             <div class="border-start ps-4 d-none d-lg-block">
                 <button type="button" class="btn btn-sm p-0" data-bs-toggle="modal" data-bs-target="#exampleModal"><i

@@ -19,7 +19,7 @@ class Admin
     public function handle(Request $request, Closure $next)
     {
         $auth = auth()->user();
-        if ($auth) {
+        if ($auth && $auth->role == 'ADMIN') {
             return $next($request);
         } else {
             return redirect()->route('login');

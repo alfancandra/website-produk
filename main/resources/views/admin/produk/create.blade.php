@@ -5,6 +5,15 @@
         <div class="col-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
+                    @if ($errors->any())
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <ul class="list-unstyled">
+                            @foreach ($errors->all() as $error)
+                                  <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endif
                     <h4 class="card-title">Tambah Data Produk</h4>
                     <p class="card-description">
                         Form ini digunakan untuk menambahkan Produk baru

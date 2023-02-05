@@ -34,6 +34,11 @@
               </div>
               <h4>Hello! let's get started</h4>
               <h6 class="fw-light">Sign in to continue.</h6>
+              @if ($message = Session::get('error'))
+                  <div id="alert" class="alert alert-danger alert-block mb-3">
+                      {{ $message }}
+                  </div>
+              @endif
               <form class="pt-3" method="post" action="{{ route('login.action') }}">
                 @csrf
                 <div class="form-group">
@@ -42,9 +47,16 @@
                 <div class="form-group">
                   <input type="password" name="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password">
                 </div>
-                <div class="mt-3">
-                  <button type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">SIGN IN</button>
+                <div class="row">
+                  <div class="col">
+                      <button type="submit" class="btn btn-block btn-primary">SIGN IN</button>
+                    
+                  </div>
+                  <div class="col">
+                    <a href="/" class="btn btn-block btn-light float-right">Cancel</a>
+                  </div>
                 </div>
+                
               </form>
             </div>
           </div>

@@ -27,7 +27,11 @@ class LoginController extends Controller
         try {
             $akun = $request->only('username', 'password');
             if (Auth::attempt($akun)) {
-                return redirect()->route('adm.dashboardadmin');
+                if(Auth::user()->role == 'ADMIN'){
+                    return redirect()->route('adm.dashboardadmin');
+                }else{
+                    return redirect('/');
+                }
             } else {
                 return redirect()->route('login')->with(['error' => 'Wrong username or password!']);
             }
@@ -41,7 +45,6 @@ class LoginController extends Controller
 
     public function logout()
     {
-        $request->session()->flush();
         Auth::logout();
         return redirect()->route('login');
     }
